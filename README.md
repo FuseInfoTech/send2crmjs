@@ -1,8 +1,8 @@
-# send2crm
+# Send2CRM
 This repository contains public send2crm JavaScript libraries.
 
 You will need a send2crm service to connect to.
-https://fuseit.com/products/send2crm-connector/
+https://www.send2crm.com/
 
 ## send2crm.min.js
 This is the main client library. To include on your website:
