@@ -1,7 +1,7 @@
 # Send2CRM
-This repository contains public send2crm JavaScript libraries.
+This repository contains public Send2CRM JavaScript libraries.
 
-You will need a send2crm service to connect to.
+You will need a Send2CRM service to connect to.
 https://www.send2crm.com/
 
 ## send2crm.min.js
