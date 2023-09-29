@@ -3,6 +3,9 @@ This repository contains public Send2CRM JavaScript libraries.
 
 You will need a Send2CRM service to connect to.
 
+## License
+Use of this software is subject to the [EULA](https://github.com/FuseInfoTech/send2crmjs/blob/main/EULA.txt)
+
 ## send2crm.min.js
 This is the main client library. To include on your website:
 ```
