@@ -19,3 +19,6 @@ Instead of copying the script file to your web server, reference it directly:
 ```
 https://cdn.jsdelivr.net/gh/FuseInfoTech/send2crmjs/send2crm.min.js
 ```
+
+## send2crm-content.min.js
+This provides the <send2crm-content /> custom element to interact with the Web Content package.
