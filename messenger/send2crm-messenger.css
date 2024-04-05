@@ -1,0 +1,342 @@
+/**
+ * Default CSS for Send2CRM messager.
+ * Reference using the 'data-stylesheet' attribute of the <send2crm-messaging> element.
+ */
+
+:host {
+	/* Reset everything inside the shadow dom to default. */
+  all: initial;
+}
+
+/* Make scroll bars less intrusive where possible. */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: white;
+}
+::-webkit-scrollbar-thumb {
+  background: lightgray;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: gray;
+}
+
+h3 {
+  text-align: center;
+  padding: 0.5em 0;
+  margin: 0;
+  font-size: 1.2em;
+  color: gray;
+  margin-bottom: 2px;
+}
+
+/* The main container <div>. */
+.messager-container {
+  position: relative;
+}
+.messager-container .content {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  border-right: 2px solid lightgray;
+  border-bottom: 2px solid lightgray;
+  border-radius: 5px;
+  color: #333;
+  font-size: 14px;
+  resize: horizontal;
+  overflow: auto;
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.6s linear;
+}
+.messager-container.collapsed .content {
+  /* Hide when collapsed. */
+  opacity: 0;
+  height: 0;
+  border: 0;
+}
+
+/* The expand/collapse button, which also displays the count of unread messages. */
+button.message-icon {
+  display: inline-flex;
+  justify-content: right;
+  align-items: right;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  padding: 5px 10px 5px 25px;
+  border: none;
+  border-radius: 12px;
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.messager-container.collapsed button.message-icon:after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 22%;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 10px solid blue;
+}
+button.message-icon.unread {
+  background-color: red;
+}
+button.message-icon.unread:after {
+  border-top-color: red;
+}
+.messager-container.collapsed button.message-icon.unread:after {
+  border-top-color: red;
+}
+.messager-container.collapsed button.message-icon {
+  top: -25px;
+}
+.messager-container button.message-icon:before {
+  position: absolute;
+  content: '\2012';
+  font-weight: bold;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background-color: white;
+  color: gray;
+  opacity: 0.5;
+  left: 5px;
+  top: 4px;
+}
+.messager-container.collapsed button.message-icon:before {
+  content: '+';
+}
+
+/* The container for individual message elements. */
+.message-list {
+  height: 30em;
+  resize: none;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: lightgray;
+  position: relative;
+}
+
+/* Date headings within the message list. */
+.message-date {
+  text-align: center;
+  font-size: 0.8em;
+  font-style: italic;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.message-date .day-heading {
+  background-color: white;
+  padding: 0.2em 0.5em;
+  border-bottom: 1px solid #DFDFDF;
+  color: gray;
+  display: block;
+  margin: 0 0.5em;
+}
+
+/* Individual message elements. */
+.message {
+  margin: 0.5em;
+  padding: 0.1em 0.5em 0.5em 0.5em;
+  box-sizing: border-box;
+  font-size: 1em;
+  opacity: 0.8;
+}
+.messager-container.collapsed .message {
+  /* Hide when collapsed. */
+  display: none;
+}
+
+/* The following styles display a small sub-heading above the first unread message. */
+.message.unread {
+  border-top: 1px solid #5a93c9;
+  padding-top: 0.6em;
+  margin-top: 1em;
+  opacity: 1;
+}
+.message.unread ~ .message.unread {
+  border-top: none;
+  padding-top: 0.1em;
+  margin-top: 0.5em;
+}
+.message.unread:before {
+  content: 'Unread';
+  text-align: center;
+  display: block;
+  width: 5em;
+  background-color: white;
+  color: #5a93c9;
+  font-size: 0.8em;
+  margin: -1.3em auto 0.5em auto;
+}
+.message.unread ~ .message.unread:before {
+  content: none;
+}
+
+/* Primary message content. */
+.message-text {
+  margin: 8px 0 0 0;
+  padding: 0.5em 1em;
+  color: white;
+  border-radius: 4px;
+  position: relative;
+  font-size: 1.2em;
+}
+.message-text:after {
+  /* This displays the triangle that makes the message background appear like a speech bubble. */
+  content: '';
+  position: absolute;
+  top: -4px;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+}
+
+/* Distinguish between inbound and outbound messages. */
+.msg-outbound {
+  margin-right: 1em;
+}
+.msg-inbound {
+  margin-left: 1em;
+  text-align: right;
+}
+.msg-outbound .message-text {
+  background-color: #618b4f;
+}
+.msg-outbound .message-text:after {
+  left: 2em;
+  border-bottom: 4px solid #618b4f;
+}
+.msg-inbound .message-text {
+  background-color: #5a93c9;
+}
+.msg-inbound .message-text:after {
+  right: 2em;
+  border-bottom: 4px solid #5a93c9;
+}
+/* The name and date/time shown above each message. */
+.message-time, .message-from {
+  color: gray;
+  font-size: 0.8em;
+}
+.message-from {
+  font-weight: bold;
+}
+
+/* Offline message is displayed at the bottom of the message list when applicable. */
+.offline-message span {
+  display: block;
+  text-align: center;
+  font-size: 0.8em;
+  background-color: #DFDFDF;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding: 0.3em 0;
+}
+.offline-message span:before {
+  /* This simulates an info icon. */
+  content: 'i';
+  font-style: italic;
+  font-weight: bold;
+  border-radius: 0.6em;
+  height: 1.2em;
+  width: 1.2em;
+  display: inline-block;
+  background-color: gray;
+  color: white;
+  margin-right: 0.5em;
+}
+
+/* The input for sending messages. */
+.message-form {
+  margin-top: 2px;
+  padding: 0.3em 0;
+  position: relative;
+}
+.message-form textarea {
+  border: 1px solid #DFDFDF;
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+  border-radius: 3px;
+  resize: none;
+}
+
+.message-form [data-state="e"] {
+  /* Error state applied when send fails. */
+  background-color: lightpink;
+}
+.message-form [data-state="p"] {
+  /* Pending state while a message send is in progress. */
+  color: gray;
+}
+/* The following styles display three animated dots while a message is being sent. */
+.message-form [data-state="p"]+.pending-ellipsis {
+  display: inline-block;
+  position: absolute;
+  width: 60px;
+  height: 20px;
+  bottom: 0;
+  right: 0;
+}
+.message-form [data-state="p"]+.pending-ellipsis div {
+  position: absolute;
+  top: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: lightgray;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.message-form [data-state="p"]+.pending-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.message-form [data-state="p"]+.pending-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.message-form [data-state="p"]+.pending-ellipsis div:nth-child(3) {
+  left: 22px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.message-form [data-state="p"]+.pending-ellipsis div:nth-child(4) {
+  left: 30px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(16px, 0);
+  }
+}
