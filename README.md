@@ -15,9 +15,9 @@ This is the main client library. To include on your website:
 ## CDN hosted
 The library may be delivered directly from Github via the jsDelivr CDN.
 
-Instead of copying the script file to your web server, reference it directly:
+Instead of copying the script file to your web server, reference the latest version directly:
 ```
-https://cdn.jsdelivr.net/gh/FuseInfoTech/send2crmjs/send2crm.min.js
+https://cdn.jsdelivr.net/gh/FuseInfoTech/send2crmjs@v1.20.0.25080/send2crm.min.js
 ```
 
 ## send2crm-content.min.js
