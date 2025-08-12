@@ -21,7 +21,7 @@ This is the main client library. To include on your website:
 Copy the SRI hash from the send2crm.sri-hash.sha384 file.
 
 ```
-<script>(function(s,e,n,d2,c,r,m){n[e]=n[e]||{};m=document.createElement('script');m.onload=function(){n[e].init(d2,c);};m.src=s;m.integrity='sha384-'+r;document.head.appendChild(m);})('https://cdn.jsdelivr.net/gh/FuseInfoTech/send2crmjs@v1.20.0.25080/send2crm.min.js', 'send2crm', window, '<service_url>', '<shared_key>', 'MMhLTpx4KWjOglo+qHQHspMKG2PZq/xf5eVrewB2A2u4+6aysZiXZ71mDRjiQwTO');</script>
+<script>(function(s,e,n,d2,c,r,m){n[e]=n[e]||{};m=document.createElement('script');m.onload=function(){n[e].init(d2,c);};m.src=s;m.integrity='sha384-'+r;m.crossOrigin='anonymous';document.head.appendChild(m);})('https://cdn.jsdelivr.net/gh/FuseInfoTech/send2crmjs@v1.20.0.25080/send2crm.min.js', 'send2crm', window, '<service_url>', '<shared_key>', 'MMhLTpx4KWjOglo+qHQHspMKG2PZq/xf5eVrewB2A2u4+6aysZiXZ71mDRjiQwTO');</script>
 ```
 
 If delivering via CDN, ensure that a specific version is applied and the hash used is from the same release.
